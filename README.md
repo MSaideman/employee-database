@@ -13,6 +13,13 @@
 
 ## Installation
 
+npm install:
+
+- inquirer
+- mysql2
+- console.table
+- jest
+
 ## Usage
 
 ## License
