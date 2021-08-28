@@ -4,11 +4,18 @@ const fs = require("fs");
 const sequelize = require('./config/connection');
 const cTable = require('console.table');
 
+// call express 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// route for express to initiate 
+app.get('/', function(req, res){
+  res.send('welcome to express');
+});
 
 // Force true to drop/recreate table(s) on every sync
 sequelize.sync({ force: true }).then(() => {
