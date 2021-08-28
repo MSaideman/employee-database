@@ -17,7 +17,7 @@ npm install:
 
 - inquirer
 - mysql2
-- console.table
+- console.table: npm install console.table --save
 - jest
 
 ## Usage

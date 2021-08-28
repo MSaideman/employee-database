@@ -2,6 +2,7 @@ const express = require('express');
 const inquirer = require("inquirer");
 const fs = require("fs");
 const sequelize = require('./config/connection');
+const cTable = require('console.table');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
