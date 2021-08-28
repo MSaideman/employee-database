@@ -48,6 +48,7 @@ function viewAllEmployees() {
       .prompt({
       })
       .then(function(answer) {   
+        startEmployeeManager()
 })};
 
 function viewAllDepartments() {
@@ -55,6 +56,7 @@ function viewAllDepartments() {
       .prompt({
       })
       .then(function(answer) {   
+        startEmployeeManager()
 })};
 
 function viewAllRoles() {
@@ -62,20 +64,23 @@ function viewAllRoles() {
       .prompt({
       })
       .then(function(answer) {   
+        startEmployeeManager()
 })};
 
 function addEmployee() {
     inquirer
       .prompt({
       })
-      .then(function(answer) {   
+      .then(function(answer) {  
+        startEmployeeManager() 
 })};
 
 function addDepartment() {
     inquirer
       .prompt({
       })
-      .then(function(answer) {   
+      .then(function(answer) {  
+        startEmployeeManager() 
 })};
 
 function addRole() {
@@ -83,13 +88,15 @@ function addRole() {
       .prompt({
       })
       .then(function(answer) {   
+        startEmployeeManager()
 })};
 
 function updateEmployeeRole() {
     inquirer
       .prompt({
       })
-      .then(function(answer) {   
+      .then(function(answer) {  
+        startEmployeeManager() 
 })};
 
 
