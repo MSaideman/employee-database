@@ -71,37 +71,106 @@ function startEmployeeManager() {
 }
 
 function viewAllEmployees() {
-  sequelize.query("", function(error, response){
-    if(error) throw error
-    console.table(response)
-  startEmployeeManager();
-})
+  sequelize.query("", function (error, response) {
+    if (error) throw error;
+    console.table(response);
+    startEmployeeManager();
+  });
 }
 
 function viewAllDepartments() {
-  startEmployeeManager();
+  sequelize.query("", function (error, response) {
+    if (error) throw error;
+    console.table(response);
+    startEmployeeManager();
+  });
 }
 
 function viewAllRoles() {
-  startEmployeeManager();
+  sequelize.query("", function (error, response) {
+    if (error) throw error;
+    console.table(response);
+    startEmployeeManager();
+  });
 }
 
 function addEmployee() {
-  inquirer.prompt({}).then(function (answer) {
-    startEmployeeManager();
-  });
+  inquirer
+    .prompt([
+      {
+        name: "firstName",
+        type: "input",
+        message: "What is the employee's first name?",
+      },
+      {
+        name: "lastName",
+        type: "input",
+        message: "What is the employee's last name?",
+      },
+      {
+        name: "role",
+        type: "input",
+        message: "What is the employee's role?",
+      },
+      {
+        name: "manager",
+        type: "input",
+        message: "Who is the employee's manager?",
+      },
+    ])
+    .then(function (response) {
+      sequelize.query("", function (error, response) {
+        if (error) throw error;
+        console.table(response);
+        startEmployeeManager();
+      });
+    });
 }
 
 function addDepartment() {
-  inquirer.prompt({}).then(function (answer) {
-    startEmployeeManager();
-  });
+  inquirer
+    .prompt([
+      {
+        name: "department",
+        type: "input",
+        message: "What department should be added?",
+      },
+    ])
+    .then(function (response) {
+      sequelize.query("", function (error, response) {
+        if (error) throw error;
+        console.table(response);
+        startEmployeeManager();
+      });
+    });
 }
 
 function addRole() {
-  inquirer.prompt({}).then(function (answer) {
-    startEmployeeManager();
-  });
+  inquirer
+    .prompt([
+      {
+        name: "title",
+        type: "input",
+        message: "What is the role's title?",
+      },
+      {
+        name: "salary",
+        type: "input",
+        message: "What is the role's salary?",
+      },
+      {
+        name: "department",
+        type: "input",
+        message: "What is the role's department?",
+      },
+    ])
+    .then(function (response) {
+      sequelize.query("", function (error, response) {
+        if (error) throw error;
+        console.table(response);
+        startEmployeeManager();
+      });
+    });
 }
 
 function updateEmployeeRole() {
