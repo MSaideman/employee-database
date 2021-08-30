@@ -173,9 +173,28 @@ function addRole() {
 }
 
 function updateEmployeeRole() {
-  inquirer.prompt({}).then(function (answer) {
-    startEmployeeManager();
+  inquirer.prompt([
+    {
+      name: "role",
+      type: "input",
+      message: "What is their new role?",
+    },
+    {
+      name: "employee",
+      type: "input",
+      message: "What is the employee's ID?",
+    }
+  ])
+  .then(function (response) {
+    db.query(
+      "UPDATE employee SET role_id = ? WHERE id = ?",
+      [response.role, response.employee],
+      function (error, response) {
+        if (error) throw error;
+        console.table(response);
+        startEmployeeManager();
+      }
+    );
   });
 }
-
 startEmployeeManager();
