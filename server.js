@@ -1,25 +1,6 @@
-const express = require("express");
 const inquirer = require("inquirer");
-const sequelize = require("./config/connection");
+const db = require("./config/connection");
 const cTable = require("console.table");
-
-// call express
-const app = express();
-const PORT = process.env.PORT || 3001;
-
-// middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// route for express to initiate
-app.get("/", function (req, res) {
-  res.send("welcome to express");
-});
-
-// Force true to drop/recreate table(s) on every sync
-sequelize.sync({ force: true }).then(() => {
-  app.listen(PORT, () => console.log("Now listening"));
-});
 
 function startEmployeeManager() {
   inquirer
@@ -62,16 +43,17 @@ function startEmployeeManager() {
           updateEmployeeRole();
           break;
         case "Exit":
-          text = "Bye!";
+          console.log("bye!");
+          db.end();
           break;
         default:
-          text = "No value found";
+          break;
       }
     });
 }
 
 function viewAllEmployees() {
-  sequelize.query("", function (error, response) {
+  db.query("SELECT * FROM employee", function (error, response) {
     if (error) throw error;
     console.table(response);
     startEmployeeManager();
@@ -79,7 +61,7 @@ function viewAllEmployees() {
 }
 
 function viewAllDepartments() {
-  sequelize.query("", function (error, response) {
+  db.query("SELECT * FROM department", function (error, response) {
     if (error) throw error;
     console.table(response);
     startEmployeeManager();
@@ -87,7 +69,7 @@ function viewAllDepartments() {
 }
 
 function viewAllRoles() {
-  sequelize.query("", function (error, response) {
+  db.query("SELECT * FROM job", function (error, response) {
     if (error) throw error;
     console.table(response);
     startEmployeeManager();
@@ -119,11 +101,20 @@ function addEmployee() {
       },
     ])
     .then(function (response) {
-      sequelize.query("", function (error, response) {
-        if (error) throw error;
-        console.table(response);
-        startEmployeeManager();
-      });
+      db.query(
+        "INSERT INTO employee SET first_name= ?, last_name = ?, role_id = ?, manager_id = ?",
+        [
+          response.firstName,
+          response.lastName,
+          response.role,
+          response.manager,
+        ],
+        function (error, response) {
+          if (error) throw error;
+          console.table(response);
+          startEmployeeManager();
+        }
+      );
     });
 }
 
@@ -137,11 +128,15 @@ function addDepartment() {
       },
     ])
     .then(function (response) {
-      sequelize.query("", function (error, response) {
-        if (error) throw error;
-        console.table(response);
-        startEmployeeManager();
-      });
+      db.query(
+        "INSERT INTO department SET dept_name = ?",
+        response.department,
+        function (error, response) {
+          if (error) throw error;
+          console.table(response);
+          startEmployeeManager();
+        }
+      );
     });
 }
 
@@ -165,11 +160,15 @@ function addRole() {
       },
     ])
     .then(function (response) {
-      sequelize.query("", function (error, response) {
-        if (error) throw error;
-        console.table(response);
-        startEmployeeManager();
-      });
+      db.query(
+        "INSERT INTO job SET title = ?, salary = ?, department_id = ?",
+        [response.title, response.salary, response.department],
+        function (error, response) {
+          if (error) throw error;
+          console.table(response);
+          startEmployeeManager();
+        }
+      );
     });
 }
 
@@ -178,3 +177,5 @@ function updateEmployeeRole() {
     startEmployeeManager();
   });
 }
+
+startEmployeeManager();

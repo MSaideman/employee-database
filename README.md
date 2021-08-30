@@ -16,9 +16,12 @@
 npm install:
 
 - inquirer
-- mysql2
-- console.table: npm install console.table --save
+- npm install --save mysql2
+- npm install console.table --save
 - jest
+- npm i sequelize
+- npm install express
+- npm install dotenv
 
 ## Usage
 
