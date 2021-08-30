@@ -1,6 +1,5 @@
 const express = require("express");
 const inquirer = require("inquirer");
-const fs = require("fs");
 const sequelize = require("./config/connection");
 const cTable = require("console.table");
 
@@ -40,7 +39,7 @@ function startEmployeeManager() {
       ],
     })
     .then(function (answer) {
-      switch (answer) {
+      switch (answer.action) {
         case "View All Employees":
           viewAllEmployees();
           break;
@@ -72,7 +71,11 @@ function startEmployeeManager() {
 }
 
 function viewAllEmployees() {
+  sequelize.query("", function(error, response){
+    if(error) throw error
+    console.table(response)
   startEmployeeManager();
+})
 }
 
 function viewAllDepartments() {
