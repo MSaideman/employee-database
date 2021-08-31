@@ -1,6 +1,12 @@
 # employee-database
 
-# Description
+# User Story
+
+```md
+AS A business owner
+I WANT to be able to view and manage the departments, roles, and employees in my company
+SO THAT I can organize and plan my business
+```
 
 ## Table of Contents
 
@@ -15,15 +21,14 @@
 
 npm install:
 
-- inquirer
+- npm install inquirer
 - npm install --save mysql2
 - npm install console.table --save
-- jest
-- npm i sequelize
-- npm install express
 - npm install dotenv
 
 ## Usage
+
+Run node index.js
 
 ## License
 
