@@ -2,6 +2,9 @@
 
 https://user-images.githubusercontent.com/82477037/131536435-df2673a9-cbec-42c7-b657-cf003470c3cf.mov
 
+- Deployed URL: https://msaideman.github.io/employee-database/
+- Github URL: https://github.com/MSaideman/employee-database
+
 # User Story
 
 ```md
