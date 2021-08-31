@@ -111,7 +111,7 @@ function addEmployee() {
         ],
         function (error, response) {
           if (error) throw error;
-          console.table(response);
+          console.table('\nSuccessfully added employee!\n');
           startEmployeeManager();
         }
       );
@@ -133,7 +133,7 @@ function addDepartment() {
         response.department,
         function (error, response) {
           if (error) throw error;
-          console.table(response);
+          console.table('\nSuccessfully added department!\n');
           startEmployeeManager();
         }
       );
@@ -165,7 +165,7 @@ function addRole() {
         [response.title, response.salary, response.department],
         function (error, response) {
           if (error) throw error;
-          console.table(response);
+          console.table('\nSuccessfully added role!\n');
           startEmployeeManager();
         }
       );
@@ -191,7 +191,7 @@ function updateEmployeeRole() {
       [response.role, response.employee],
       function (error, response) {
         if (error) throw error;
-        console.table(response);
+        console.table(response.employee `has been updated!`);
         startEmployeeManager();
       }
     );
