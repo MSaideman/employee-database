@@ -1,6 +1,6 @@
 # employee-database
 
-https://user-images.githubusercontent.com/82477037/131536435-df2673a9-cbec-42c7-b657-cf003470c3cf.mov
+https://user-images.githubusercontent.com/82477037/132137752-6a330ce2-f528-495c-b2c9-31eff0700687.mp4
 
 - Deployed URL: https://msaideman.github.io/employee-database/
 - Github URL: https://github.com/MSaideman/employee-database
