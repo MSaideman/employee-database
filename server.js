@@ -187,8 +187,8 @@ function updateEmployeeRole() {
   ])
   .then(function (response) {
     db.query(
-      "UPDATE employee SET role_id = ? WHERE id = ?",
-      [response.role, response.employee],
+      "UPDATE employee SET role_id =? WHERE id =?",
+      [response.role, response.id],
       function (error, response) {
         if (error) throw error;
         console.table(response.employee `has been updated!`);
